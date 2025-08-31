@@ -1,5 +1,5 @@
 import mongoose, {Document, Schema } from "mongoose";
-import { Noto_Sans_Mongolian } from "next/font/google";
+
 
 
 export interface Message extends Document{
