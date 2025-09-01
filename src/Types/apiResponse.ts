@@ -1,4 +1,5 @@
-import { Message } from "@/model/user";
+import { Message } from "@/model/User";
+
 
 
 export interface Apiresponse {

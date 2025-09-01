@@ -25,3 +25,5 @@ async function dbconnect():Promise<void>{
         console.error("Error connecting to database:", error);
     }
 }
+
+export default dbconnect

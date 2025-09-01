@@ -10,11 +10,11 @@ export async function sendverificationEmail (
 ): Promise<Apiresponse>
 {
     try {
-        await resend.emails.send({
+    await resend.emails.send({
     from: 'Acme <onboarding@resend.dev>',
     to: email,
     subject: "mystery Message verification code",
-    react: VerificationEmail({ username, otp: verifyCode }),
+    react: VerificationEmail({ username, otp: verifyCode }), //username and otp because we have passed them in the erificationemail as a parameter
   });
   return { success: true, message: 'Verification email sent successfully.' }; //this response is related to API-RESPONSE that we have written in API RESPONSE success and message were compulsary to return
     } catch (error) {
