@@ -1,6 +1,6 @@
 import dbconnect from "@/lib/dbconnect";
 import UserModel from "@/model/User";
-import { success, z } from "zod";
+import {  z } from "zod";
 import { usernameValidation } from "@/schemas/signUpSchema"; 
 
 //validate username from the url
