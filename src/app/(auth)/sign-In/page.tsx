@@ -19,10 +19,10 @@ export default function SignUpForm(){
       //define states 
       const [username,setUsername]=useState('');
       const [usernameMessage,setUsernameMessage] = useState("");
-      const[ischeckingusername,setIscheckingusername] =useState(false);
-      const[issubmitting,setIssubmitting] =useState(false);
+      const[ischeckingusername,setIscheckingusername] =useState(false); //loading state during username check
+      const[issubmitting,setIssubmitting] =useState(false); //to mange the stae for submitting the form
 
-      const debouncedUsername = useDebounceValue(username,300) //if wondering where i susername cmg from its from teh state which we would handle later
+      const debouncedUsername = useDebounceValue(username,300) //if wondering where is username cmg from its from teh state which we would handle later
 
       const router = useRouter() //this is useful redirecting pages 
       
@@ -49,7 +49,7 @@ export default function SignUpForm(){
             try {
               const response = await axios.get<Apiresponse>(
                    `/api/check-username-unique?username=${debouncedUsername}}`
-                 )
+                 )  //user domain automatically prepend by the next 
                  setUsernameMessage(response.data.message);
             } catch (error) {
                 const axiosError = error as AxiosError<Apiresponse>;
