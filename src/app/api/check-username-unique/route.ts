@@ -14,21 +14,22 @@ const UsernameSchema = z.object({
 export async function GET(request:Request){
     //database connection
 
-    dbconnect();
+     await dbconnect();
 
     
 try {
+        console.log("is it entering actuallyu?")
         const {searchParams} = new URL(request.url)   //this is for extracting dadt from the URL //compulsary to write
         const queryParams = {
-            username:searchParams.get('username') //lhs is key //rhs is the value
+            username:searchParams.get('username')?.toString() //lhs is key //rhs is the value
         }
-
+        console.log("searchParams.get('username'):", searchParams.get('username'));
         const result = UsernameSchema.safeParse(queryParams);
-
+        console.log("result",result);
         if(!result.success){
             const usernameErrors = result.error.format().username?._errors || [];
-
-
+            console.log(usernameErrors)
+            console.log("has it entered here?")
             return Response.json(
                 {
                     success:false,
@@ -44,7 +45,7 @@ try {
 
         //extracting usernam e
         const { username } = result.data;
-
+        console.log("username",username);
 
         const existingVerfiedUser =await UserModel.findOne({
             username,

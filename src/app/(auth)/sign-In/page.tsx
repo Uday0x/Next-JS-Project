@@ -6,12 +6,13 @@ import { useForm } from 'react-hook-form';
 import * as z from 'zod';
 import { signIn } from "next-auth/react"
 import { useEffect, useState } from 'react';
-import { useRouter } from 'next/router';
+
 import { toast } from "sonner"
 import { signUpSchema } from '@/schemas/signUpSchema';
 import { signInSchema } from '@/schemas/signInschemaSchema';
 import { useDebounceValue } from 'usehooks-ts'
 import { Apiresponse } from "@/Types/apiResponse";
+import { useRouter } from "next/navigation";
 
 
 
