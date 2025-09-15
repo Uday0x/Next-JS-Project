@@ -21,7 +21,7 @@ try {
         console.log("is it entering actuallyu?")
         const {searchParams} = new URL(request.url)   //this is for extracting dadt from the URL //compulsary to write
         const queryParams = {
-            username:searchParams.get('username')?.toString() //lhs is key //rhs is the value
+            username:searchParams.get('username')?.trim() //lhs is key //rhs is the value
         }
         console.log("searchParams.get('username'):", searchParams.get('username'));
         const result = UsernameSchema.safeParse(queryParams);
@@ -43,7 +43,7 @@ try {
         }
 
 
-        //extracting usernam e
+        //extracting username
         const { username } = result.data;
         console.log("username",username);
 
@@ -62,6 +62,13 @@ try {
             })
 
         }
+          return Response.json(
+      {
+        success: true,
+        message: 'Username is unique',
+      },
+      { status: 200 }
+    );
         
 } catch (error) {
         console.error("error checking teh username",error);

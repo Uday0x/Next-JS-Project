@@ -68,7 +68,7 @@ export default function SignUpForm() {
   const onSubmit = async (data: z.infer<typeof signUpSchema>) => {
     setIsSubmitting(true);
     try {
-      const response = await axios.post<Apiresponse>("/api/sign-up", data);
+      const response = await axios.post<Apiresponse>("/api/signup", data);
       toast.success(response.data.message);
       router.replace(`/verify/${data.username}`);
     } catch (error) {
